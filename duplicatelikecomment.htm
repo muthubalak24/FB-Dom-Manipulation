@@ -1,0 +1,163 @@
+﻿    <html>
+    <body>
+	
+        <input type="text" class="typebox">
+	    <button onclick="postbutton(this);">
+			Post
+		</button>
+		<hr> 
+	
+
+	<div style="border-style:solid" >
+		<h3 id="name">
+			Muthu
+		</h3>
+		<p>
+			I am Muthu kumaran
+		</p>
+		<span class="likevalue"> 
+			0 
+		</span> 
+		Liked 
+		<br>
+		<button onclick="lbutton(this);"> 
+			Like 
+		</button>
+		<button onclick="cbutton(this);"> 
+			comment 
+		</button>
+		<div class="comment" style="display:none;">
+			<input type="text" class="commentbox"  >
+			<button  onclick="adbutton(this)">
+				Add
+			</button>
+		</div>
+	</div><hr>
+	
+	<div style="border-style:solid">
+		<h3 id="name" >
+			Muthu
+		</h3>
+		<p>
+			I am in Chennai
+		</p>
+		<span class="likevalue">
+			0 
+		</span> 
+		Liked 
+		<br>  
+		<button onclick="lbutton(this)"> 
+			Like 
+		</button>
+		<button onclick="cbutton(this)">
+			comment 
+		</button>	
+		<div class="comment" style="display:none;">
+			<input type="text" class="commentbox" >
+			<button  onclick="adbutton(this )">
+				Add
+			</button>
+		</div>
+	</div>
+        
+	<p id="demo"></p>
+	<script>
+		
+		var m=document.getElementById("name").innerHTML;
+		var watch=0;
+		var followw=0;
+		var s="";
+		var numberofpost=0;
+
+		function lbutton(value)
+		{
+		//alert(value);
+			var element=[];
+		    element=value.parentElement.getElementsByClassName("likevalue");
+			element[0].innerHTML=parseInt(element[0].innerHTML)+1;
+		}
+
+		             
+		function cbutton(value) 
+		{        
+		    watch=watch+1; 
+		    var element=[];
+		    if(watch%2==0){
+			    element=value.nextSibling.parentElement.getElementsByClassName("comment");
+				element[0]=element[0].style.display="none";
+				}else{
+					element=value.nextSibling.parentElement.getElementsByClassName("comment");
+					element[0]=element[0].style.display="block";
+				}           
+	    }			
+			 	
+		function adbutton(value)
+			{
+			  var v=document.createElement("span");
+			  var element=[];
+			  element=value.previousSibling.parentElement.getElementsByClassName("commentbox");
+			  var elementValue=element[0].value;
+		      v.innerHTML='<br>'+'<hr>'+ m+ ":"+'<br>'+elementValue; 
+			  value.parentElement.parentElement.appendChild(v);
+			  element[0].value=s;
+		}
+		function postbutton(value)
+			{ 
+			  var typebox=[];
+			  typebox=value.previousSibling.parentElement.getElementsByClassName("typebox");
+			  var typebox1=typebox[0].value;
+			  var newdiv=document.createElement("div");
+			  newdiv.setAttribute("style", "border-style:solid");
+		          
+				var vhr=document.createElement("HR");
+
+				var v=document.createElement("span"); 	
+				v.innerHTML= '<h3>Muthu</h3>'+typebox1+'<br>'+'<br>';
+
+				var v1=document.createElement("span");
+				v1.setAttribute("class","likevalue");
+				v1.innerHTML="0";
+				var v2=document.createElement("span");
+				v2.innerHTML=" Liked"+'<br>';
+
+				var v3=document.createElement("BUTTON");
+				v3.setAttribute('onclick','lbutton(this);');
+				var v4=document.createTextNode("Like");
+
+				var v5=document.createElement("BUTTON");
+				var v6=document.createTextNode("Comment");
+				v5.setAttribute('onclick','cbutton(this);');
+
+				var vdiv=document.createElement("div");
+				vdiv.setAttribute("class","comment");
+				vdiv.setAttribute("style","display:none;")
+				var v7=document.createElement("INPUT");
+				v7.setAttribute("type","text");
+				v7.setAttribute("class","commentbox");
+
+				var v8=document.createElement("BUTTON");
+				var v9=document.createTextNode("Add");
+				v8.setAttribute('onclick','adbutton(this);');
+			 
+				document.body.appendChild(vhr);
+				document.body.appendChild(newdiv);
+				newdiv.appendChild(v);
+				newdiv.appendChild(v1);
+				newdiv.appendChild(v2);
+				v3.appendChild(v4);
+				newdiv.appendChild(v3);
+				v5.appendChild(v6);
+				newdiv.appendChild(v5);
+				vdiv.appendChild(v7);
+				v8.appendChild(v9);
+				vdiv.appendChild(v8);
+			  newdiv.appendChild(vdiv);			  
+			
+				typebox[0].value=s;	
+
+		} 
+		
+	</script>
+	 
+    </body>
+    </html>
